@@ -45,40 +45,28 @@ const TicTacToe = () => {
     }
 
     // const checkWin = () => 
-    function checkWin(){
-        if(data[0]===data[1] && data[1]===data[2] && data[0]!==""){
+    function checkWin() {
+        if (data[0] === data[3] && data[3] === data[6] && data[0] !== "") {
             won(data[0]);
-        }
-        else if(data[3] === data[4] && data[4] === data[5] && data[3] !== ""
-        ){
+        } else if (data[1] === data[4] && data[4] === data[7] && data[1] !== "") {
+            won(data[1]);
+        } else if (data[2] === data[5] && data[5] === data[8] && data[2] !== "") {
+            won(data[2]);
+        } else if (data[0] === data[1] && data[1] === data[2] && data[0] !== "") {
+            won(data[0]);
+        } else if (data[3] === data[4] && data[4] === data[5] && data[3] !== "") {
             won(data[3]);
-        }
-        else if(data[6] === data[7] && data[7] === data[8] && data[6] !== ""
-        ){
+        } else if (data[6] === data[7] && data[7] === data[8] && data[6] !== "") {
             won(data[6]);
-        }
-        else if(data[0] === data[3] && data[3] === data[6] && data[0] !== ""
-        ){
+        } else if (data[0] === data[4] && data[4] === data[8] && data[0] !== "") {
             won(data[0]);
-        }
-        else if(data[2] === data[5] && data[5] === data[8] && data[2] !== ""
-        ){
+        } else if (data[2] === data[4] && data[4] === data[6] && data[2] !== "") {
             won(data[2]);
-        }
-        else if(data[0] === data[4] && data[4] === data[8] && data[0] !== ""
-        ){
-            won(data[0]);
-        }
-        else if(data[2] === data[4] && data[4] === data[6] && data[2] !== ""
-        ){
-            won(data[2]);
-        }
-        else{
-            if(count == 9){
-                checkDraw();
-            }
+        } else if(count === 9){
+            checkDraw();
         }
     }
+    
 
     function checkDraw() {
         if (count === 9 && !lock) {
@@ -94,14 +82,13 @@ const TicTacToe = () => {
             titleRef.current.innerHTML = `Congratulations: <img src=${cross_icon}> <span> Wins</span>`
         }
         else{
-            titleRef.current.innerHTML = `Congratulations: <img src=${circle_icon} <span> Wins</span>`
+            titleRef.current.innerHTML = `Congratulations: <img src=${circle_icon}> <span> Wins</span>`
         }
     }
     function reset(){
         titleRef.current.innerHTML = `Tic Tac Toe Game In <span>React</span>`;
         setLock(false);
-        setCount(0);
-        // data = ["","","","","","","","",""];
+        setCount(0);        
         data.fill("");
         boxArray.map((e)=>{
             e.current.innerHTML = "";
